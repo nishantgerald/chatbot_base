@@ -16,12 +16,25 @@ Using a sophisticated language model from OpenAI, the chatbot understands and ge
 
 ### Requirements
 Before starting, ensure Python is installed on your system along with the following packages:
-- `dotenv`
-- `argparse`
-- `requests`
-- `flask`
-- `langchain`
-- `gradio`
+```
+Flask==2.2.2
+Flask-Bootstrap==3.3.7.1
+Flask-Compress==1.12
+Flask-Cors==4.0.0
+Flask-SQLAlchemy==3.0.3
+google-api-core==2.11.0
+google-api-python-client==2.86.0
+gradio==4.31.5
+gradio_client==0.16.4
+langchain==0.2.0
+langchain-community==0.0.36
+langchain-core==0.2.1
+langchain-openai==0.1.7
+langchain-text-splitters==0.2.0
+langchainhub==0.1.15
+python-dotenv==1.0.0
+requests==2.31.0
+```
 
 You'll also need a `.env` file in your project root with necessary API keys (e.g., `WEATHER_API_KEY` for fetching weather data).
 
@@ -33,12 +46,12 @@ Clone the repository and navigate into the project directory. Install the requir
 You can choose between a web interface or a command-line interface to run the chatbot:
 
 1. **Web Interface**:
-`python -m your_project_name –web`
+`./app.py –web`
 
 This command starts a Gradio web server allowing you to interact with the bot through a web browser.
 
 2. **Command-Line Interface**:
-`python -m your_project_name –cli –prompt “Your question here”`
+`./app.py –cli –prompt “Your question here”`
 
 Use this mode for a quick command-line interaction. Replace `"Your question here"` with your query.
 

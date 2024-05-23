@@ -13,7 +13,7 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_community.utilities import GoogleSearchAPIWrapper
-from langchain.memory import ChatMessageHistory
+from langchain_community.chat_message_histories import ChatMessageHistory
 import gradio as gr
 
 
@@ -120,10 +120,8 @@ def chat_response(
 def main():
     load_environment()
     args = parse_arguments()
-
     tools = [current_weather, google_search, url_reader]
     tool_names = ["CurrentWeather", "GoogleSearch", "URLReader"]
-
     llm = initialize_llm()
     agent_executor = create_agent(llm, tools, tool_names)
     memory = ChatMessageHistory(session_id="test-session")

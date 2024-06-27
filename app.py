@@ -19,6 +19,7 @@ import gradio as gr
 
 def load_environment():
     """Load environment variables from a .env file."""
+    del os.environ['OPENAI_API_KEY']
     dotenv.load_dotenv()
 
 
@@ -132,7 +133,8 @@ def main():
         def gradio_chat_response(message, history):
             return chat_response(agent_with_chat_history, message)
 
-        gr.ChatInterface(gradio_chat_response).launch(share=False)
+        chatbot = gr.ChatInterface(gradio_chat_response, css="footer {visibility: hidden} label.svelte-1b6s6s {visibility: hidden}")
+        chatbot.launch(share=True)
 
     if args.cli:
         response = chat_response(agent_with_chat_history, args.prompt)
